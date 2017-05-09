@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>note</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<link rel="stylesheet" href="css/note.css">
+	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script type="text/javascript" src="js/note.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="nav">
+	<div class="nav-header">
+		<h2>重构の坑</h2>
+		<div class="icon-menu">
+		<div class="line line1"></div>
+		<div class="line line2"></div>
+		<div class="line line3"></div>
+		</div>
+	</div>
+		<ul class="wrap-nav-item" >
+			<li class="nav-item"><p>PC端</p>
+				<ul id="nav">
+					<li><a href="#item1" class="active" >IE</a></li>
+					<li><a href="#item2" >Firefox</a></li>
+				</ul>
+			</li>
+			<li class="nav-item"><p>移动端</p>
+				<ul>
+					<li><a href="#item3">IOS</a></li>
+					<li><a href="#item4">Android</a></li>
+					<li><a href="#item5">移动端通病</a></li>
+				</ul>
+			</li>
+			<li class="nav-item"><p>通用</p>
+				<ul>
+				<li><a href="#item6">通用问题</a></li>
+				<li><a href="#item7">其他笔记</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="content">
+		<div class="wrap-content">
+			<div class="wrap-content-item" id="item1">
+				<h3 class="content-item-title">IE</h3>
+				 <div class="content-item">
+					 <h4>1/有哪些需要注意的点？</h4>
+					 <ol>
+					 	<li>IE9及以下无法改变button[disabled]的字体颜色（可改变背景颜色等）。</li>
+					 	<li>IE9及以下不能使用animation。</li>
+					 	<li>IE8及以下不能使用translate/last-child/positon-size。</li>
+					 	<li>Jq1.8以上版本不兼容IE8及以下，如果需要兼容低版本IE，应采用低版本Jq。</li>
+					 </ol>
+					 <div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">低版本IE</span>
+				 	</div>
+				</div>
+			</div>
+			<div class="wrap-content-item" id="item2">
+				<h3 class="content-item-title">Firefox</h3>
+				 <div class="content-item">
+					 <h4>1/有哪些需要注意的点？</h4>
+					 <ol>
+					 	<li>input[type="checkbox"]{-moz-appearance: none;}在火狐浏览器并没有效果。</li>
+					 </ol>
+				 </div>
+			</div>
+			<div class="wrap-content-item" id="item3">
+				<h3 class="content-item-title">IOS</h3>
+				 <div class="content-item">
+					 <h4>1/label内有多个input元素时，无法选中各个input元素？</h4>
+					 <ol>
+					 	<li>当label内部有多个input元素时，PC端和安卓浏览器可以选中各个input，而在IOS中会默认选中第一个，后面的input元素无法选中，故需要注意不要用label去包裹多个input元素。</li>
+					 </ol>
+				 </div>
+			</div>
+			<div class="wrap-content-item" id="item4">
+				<h3 class="content-item-title">Android</h3>
+				 <div class="content-item">
+					 <h4>1/有哪些需要注意的点？</h4>
+					 <ol>
+					 	<li>低版本安卓系统不支持兄弟选择器。</li>
+					 </ol>
+				 </div>
+				 <div class="content-item">
+					 <h4>2/flex布局中的flex-basis失效？</h4>
+					 <ol>
+					 	<li>需要给相应的元素设置width属性。</li>
+					 </ol>
+					 <div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">flexbox</span>
+				 	</div>
+				 </div>
+				 <div class="content-item">
+					 <h4>3/svg元素对css中的tranform支持性不好，若对其设置2D变换会出现有背景色等bug？</h4>
+					 <ol>
+					 	<li>若需要对其设置2D变换，可采用在svg元素外层进行包裹，对其包裹层设置动画的方法。</li>
+					 </ol>
+					<div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">SVG</span>
+				 	</div>
+				 </div>
+			</div>
+			<div class="wrap-content-item" id="item5">
+				<h3 class="content-item-title">移动端通病</h3>
+				 <div class="content-item">
+					 <h4>1/设置为{flex: 1;}的input，如果font-size过大，会导致整个input莫名变高，并挤压到其他元素？</h4>
+					 <ol>
+					 	<li>给设置为flexbox的input添加一个width，具体数值没有限定，宽度不起作用，但能解决上述问题。</li>
+					 </ol>
+					 <div class="keyword">
+					  <span>关键词：</span><span class="keyword-item">flexbox</span>
+				 	</div>
+				 </div>
+				 <div class="content-item">
+					 <h4>2/设置为{overflow: hidden; border-radius: 4px;}的元素，内部子元素若设置transform动画时，会有溢出现象，border-radius失效？</h4>
+					 <ol>
+					 	<li>给设置了border-radius的元素设置z-index。</li>
+					 </ol>
+				 </div>
+				 <div class="content-item">
+					 <h4>3/IOS7及低版本安卓系统中，行内元素设置为flexbox后无法改变其作为行内元素的属性？</h4>
+					 <ol>
+					 	<li>对行内元素设置{display: block;}（注意：display: inline-block;无效）。</li>
+					 </ol>
+					<div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">flexbox</span>
+				 	</div>
+				 </div>	
+				 <div class="content-item">
+					 <h4>4/body设置{width: 100%; height: 100%; overflow: hidden;}，在PC端浏览器上页面显示正常，无法滚动，但是在移动端上body依然存在滚动行为？</h4>
+					 <ol>
+					 	<li>让html和body元素都设置{height: 100%; overflow: hidden;}，最好在body再设置{position: relative;}</li>
+					 </ol>
+					 <pre class="pre language-css"><code class=" language-css"><span class="token selector">html,body</span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">body</span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+				 </div>	
+				 <div class="content-item">
+					 <h4>5/按钮文字已经设置了line-height却没有垂直居中？</h4>
+					 <ol>
+					 	<li>button元素有默认的padding，最好在reset中对其设置{padding: 0;}。</li>
+					 </ol>
+				 </div>	
+			</div>	
+			<div class="wrap-content-item" id="item6">
+				<h3 class="content-item-title">通用问题</h3>
+				 <div class="content-item">
+					 <h4>1/pre标签默认属性{white-space: pre;}，会保护内容宽度而撑宽父元素？</h4>
+					 <ol>
+					 	<li>若需要破坏撑宽机制，可对其设置为{white-space: pre-wrap;}。</li>
+					 </ol>
+				 </div>
+				 <div class="content-item">
+					 <h4>2/input元素或者textarea元素中，闪动的光标颜色与设定的字体颜色相同（即color属性），如何更改光标颜色？</h4>
+					 <ol>
+					 	<li>首先，利用color属性设定所需要的光标颜色，然后输入文字的颜色利用text-shadow进行重设。</li>
+					 </ol>
+					 <div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">光标</span>
+				 	</div>
+				 </div>
+				 <div class="content-item">
+					 <h4>3/如何设置一个有placeholder的select元素？</h4>
+					 <ol>
+					 	<li>解决方法如下：</li>
+					 </ol>
+					 <pre class="pre language-css"><code class=" language-css"><span class="token selector">select:invalid</span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #999<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+					<pre class="pre language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">required</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span> <span class="token attr-name">selected</span> <span class="token attr-name">hidden</span><span class="token punctuation">&gt;</span></span>Please Choose<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+					<div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">select</span>
+				 	</div>
+				 </div>	
+				 <div class="content-item">
+					 <h4>4/textarea元素不能设置max-height属性？</h4>
+					 <ol>
+					 	<li>可以采用给div添加属性 contenteditable="true"，可模拟成一个textarea，同时可以设置高度限制。</li>
+					 </ol>
+					 <pre class="pre language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">contenteditable</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">max-height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    我是一个可以编辑内容的div
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+					 <div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">textarea</span>
+				 	</div>
+				 </div>	
+				 <div class="content-item">
+					 <h4>5/图片下方多出来几个空白的像素？</h4>
+					 <ol>
+					 	<li>img属于inline元素，inline因为受到字号和行间距的影响底部留出了一段距离。解决方法有： <br>
+						(1) img元素块级化； <br>
+						(2) 父元素字号或者行间距为0； <br>
+						(3) img {vertical-align: middle;} 。</li>
+					 </ol>
+					 <pre class="pre language-css"><code class=" language-css"><span class="token selector">img</span><span class="token punctuation">{</span><span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span><span class="token punctuation">}</span>
+
+<span class="token selector">div</span><span class="token punctuation">{</span><span class="token property">font-size</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">div</span><span class="token punctuation">{</span><span class="token property">line-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span><span class="token punctuation">}</span>
+
+<span class="token selector">img</span><span class="token punctuation">{</span><span class="token property">vertival-align</span><span class="token punctuation">:</span> middle<span class="token punctuation">;</span><span class="token punctuation">}</span>
+</code></pre>	
+				 <div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">img几个像素空白</span>
+				 </div>
+			</div>	
+			<div class="wrap-content-item" id="item7">
+				<h3 class="content-item-title">其他笔记</h3>
+				 <div class="content-item">
+					 <h4>1/觉得还不错的参考资料</h4>
+					 <ol>
+					 	<li><a href="http://www.jb51.net/css/493362.html">最全的CSS HACK</a></li>
+					 	<li><a href="http://www.w3cplus.com/preprocessor/intermediate/spriting-with-sass-and-compass.html">使用SASS和Compass合并雪碧图</a></li>
+					 	<li><a href="http://www.webhek.com/draw-a-stickman/">SVG绘图-小人动画</a></li>
+					 	<li><a href="http://www.w3cplus.com/preprocessor/sass-mixin-or-extend.html">@mixin和@extend该如何选择</a></li>
+					 	<li><a href="http://www.cnblogs.com/wuxiaobin/p/4906961.html">canvas画图基础</a></li>
+					 </ol>
+				 </div>
+				 <div class="content-item">
+					 <h4>2/animation-fill-mode: none | both | forwards | backwards</h4>
+					 <ol>
+					 	<li>animation相关属性</li>
+					 </ol>
+					 <div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">animation</span>
+				 	</div>
+				 </div>
+				 <div class="content-item">
+					 <h4>3/-webkit-font-smoothing: none(适合低像素文本) | subpixel-antialiased(默认值) | antialiased(抗锯齿)</h4>
+					 <ol>
+					 	<li>该属性可以使页面上的字体抗锯齿，使用后字体看起来会更清晰舒服，但针对小号字体使用none较为合适，但目前该属性已从W3C标准中移除，慎用！</li>
+					 </ol>
+					<div class="keyword">
+					 <span>关键词：</span><span class="keyword-item">抗锯齿</span>
+				 	</div>
+				 </div>	 
+			</div>	
+		</div>
+	</div>
+</div>
+</body>
+</html>
