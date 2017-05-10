@@ -5,7 +5,7 @@ $(function(){
 				$(this).addClass("active");
 				var id=$(this).attr("href");
 				var oTop=$(id).offset().top;
-				$("body").animate({scrollTop:oTop-50+"px"},500);
+				$("body,html").animate({scrollTop:oTop-50+"px"},500);
 				return false;
 			});
 			$(window).scroll(function(){
